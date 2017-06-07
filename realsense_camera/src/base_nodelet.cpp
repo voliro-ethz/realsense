@@ -963,9 +963,9 @@ namespace realsense_camera
 
       float depth_scale_meters = rs_get_device_depth_scale(rs_device_, &rs_error_);
       // Fill the PointCloud2 fields.
-      for (int y = 0; y < z_intrinsic.height; y++)
+      for (int y = 0; y < z_intrinsic.height; y+=2)
       {
-        for (int x = 0; x < z_intrinsic.width; x++)
+        for (int x = 0; x < z_intrinsic.width; x+=2)
         {
           scaled_depth = static_cast<float>(*image_depth16_) * depth_scale_meters;
           float depth_pixel[2] = {static_cast<float>(x), static_cast<float>(y)};
